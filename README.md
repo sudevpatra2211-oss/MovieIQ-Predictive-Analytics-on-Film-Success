@@ -1,75 +1,277 @@
 # 🎬 MovieIQ — Movie Success Predictor
 
-A Streamlit dashboard for predictive analytics on film success, using Random Forest classification to predict whether a movie's revenue exceeds its budget.
+**Predictive Analytics Dashboard | Streamlit | Machine Learning**
 
-## Features
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://movieiq-predictor.streamlit.app/)
+[![Python 3.11](https://img.shields.io/badge/python-3.11-blue.svg)](https://www.python.org/downloads/release/python-3110/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-- **Overview Tab**: Dataset statistics and data preview
-- **EDA Tab**: Genre distribution, success rates, budget vs. revenue scatter plots, and feature distributions
-- **Statistical Tests Tab**: T-tests for numeric features and Chi-square test for genre associations
-- **Prediction Tab**: Interactive tool to predict movie success based on input parameters
+---
 
-## Setup & Deployment
+## 📋 Overview
 
-### Prerequisites
+MovieIQ is an interactive Streamlit dashboard that predicts movie success using machine learning. The application analyzes movie features (budget, popularity, genre, runtime, ratings) to predict whether a movie's revenue will exceed its budget.
 
-- Python 3.9+
-- Required data and model files (see below)
+**Key Metrics:**
+- **Dataset:** 600+ movies with comprehensive features
+- **Model:** Random Forest Classifier
+- **Features:** Budget, Popularity, Runtime, Vote Average, Genre
+- **Target:** Binary classification (Success/Failure)
 
-### Installation
+---
 
-1. Clone the repository:
+## ✨ Features
+
+### 📊 **Overview Tab**
+- Dataset statistics and KPIs
+- Movie count, success rate, average budget/revenue
+- Sample data preview (first 20 movies)
+- Detailed dataset information
+
+### 📈 **EDA Tab (Exploratory Data Analysis)**
+- Genre distribution chart
+- Success rate by genre
+- Budget vs. Revenue scatter plot
+- Feature distribution histograms
+- Interactive feature selection
+
+### 🧪 **Statistical Tests Tab**
+- T-tests for numeric features
+- Chi-square test for categorical data
+- P-value significance testing
+- Statistical interpretation
+
+### 🎯 **Prediction Tab**
+- Interactive input controls
+- Real-time movie success prediction
+- Probability estimation
+- Input validation and error handling
+
+---
+
+## 🚀 Quick Start
+
+### Local Installation
+
 ```bash
+# Clone the repository
 git clone https://github.com/sudevpatra2211-oss/MovieIQ-Predictive-Analytics-on-Film-Success.git
 cd MovieIQ-Predictive-Analytics-on-Film-Success
-```
 
-2. Install dependencies:
-```bash
+# Create virtual environment (recommended)
+python -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+
+# Install dependencies
 pip install -r requirements.txt
-```
 
-### Required Files
-
-Before running the app, ensure these files are in the project root:
-
-- **`movies_cleaned.csv`** - Cleaned dataset with columns: `genre`, `budget`, `revenue`, `success`, `popularity`, `runtime`, `vote_average`
-- **`movieiq_rf_model.joblib`** - Trained Random Forest model
-- **`genre_encoder.joblib`** - Fitted LabelEncoder for genre encoding
-
-### Running Locally
-
-```bash
+# Run the app
 streamlit run app.py
 ```
 
 The app will open at `http://localhost:8501`
 
-### Deployment on Streamlit Cloud
+---
 
-1. Push your repository to GitHub (including all required files)
-2. Go to [Streamlit Cloud](https://streamlit.io/cloud)
-3. Click "New app"
-4. Connect your GitHub repository and select the `main` branch
-5. Set the main file path to `app.py`
-6. Deploy!
+## ☁️ Streamlit Cloud Deployment
 
-**Note**: Ensure the data and model files are available in the repository.
+### Automatic Deployment
 
-## Model Performance
+1. **Go to [Streamlit Cloud](https://share.streamlit.io/)**
+2. **Click "New app"**
+3. **Fill in the details:**
+   - Repository: `sudevpatra2211-oss/MovieIQ-Predictive-Analytics-on-Film-Success`
+   - Branch: `main`
+   - Main file: `app.py`
+4. **Click "Deploy"**
 
-- **Test-set ROC-AUC**: 0.47 (near chance level)
-- **Note**: Predictions should be treated as illustrative of the ML pipeline rather than reliable forecasts
+### Manual Alternative
 
-## Tech Stack
+```bash
+# Install Streamlit CLI
+pip install streamlit
 
-- **Streamlit** - Web app framework
-- **pandas & numpy** - Data manipulation
-- **scikit-learn** - Machine learning
-- **scipy** - Statistical testing
-- **matplotlib** - Visualizations
-- **joblib** - Model serialization
+# Deploy
+streamlit deploy --repository https://github.com/sudevpatra2211-oss/MovieIQ-Predictive-Analytics-on-Film-Success
+```
 
-## License
+---
 
-Open source - feel free to modify and distribute.
+## 📁 Project Structure
+
+```
+MovieIQ-Predictive-Analytics-on-Film-Success/
+├── app.py                          # Main Streamlit application
+├── requirements.txt                # Python dependencies
+├── .streamlit/
+│   └── config.toml                # Streamlit configuration
+├── movies_cleaned.csv             # Dataset
+├── README.md                       # This file
+├── DEPLOYMENT.md                   # Deployment guide
+├── Procfile                        # Heroku deployment config
+├── setup.sh                        # Environment setup script
+├── runtime.txt                     # Python version
+├── streamlit_app.py               # Cloud deployment alias
+└── .gitignore                      # Git ignore patterns
+```
+
+---
+
+## 📊 Dataset
+
+**movies_cleaned.csv** contains the following features:
+
+| Feature | Type | Description |
+|---------|------|-------------|
+| title | String | Movie title |
+| genre | Categorical | Movie genre |
+| budget | Numeric | Production budget ($) |
+| revenue | Numeric | Box office revenue ($) |
+| roi | Numeric | Return on investment |
+| success | Binary | Revenue > Budget (1/0) |
+| popularity | Numeric | Popularity score |
+| runtime | Numeric | Movie duration (minutes) |
+| vote_average | Numeric | IMDb-like rating (0-10) |
+| has_missing | Boolean | Data quality flag |
+
+---
+
+## 🤖 Machine Learning Model
+
+**Model Type:** Random Forest Classifier
+
+**Input Features:**
+- Budget
+- Popularity
+- Runtime
+- Vote Average
+- Genre (encoded)
+
+**Output:** Binary prediction (Success/Failure)
+
+**Performance Notes:**
+- Test ROC-AUC: ~0.47 (near chance level)
+- Predictions are illustrative; not reliable for production use
+- Model files required: `movieiq_rf_model.pkl`, `genre_encoder.pkl`
+
+---
+
+## 📋 Requirements
+
+```
+streamlit>=1.28.0
+pandas>=1.5.0
+numpy>=1.24.0
+scikit-learn>=1.3.0
+scipy>=1.10.0
+matplotlib>=3.7.0
+pillow>=10.0.0
+```
+
+Install all with:
+```bash
+pip install -r requirements.txt
+```
+
+---
+
+## 🔧 Configuration
+
+### Streamlit Configuration (.streamlit/config.toml)
+
+```toml
+[theme]
+primaryColor = "#3498db"
+backgroundColor = "#f5f5f5"
+secondaryBackgroundColor = "#ffffff"
+textColor = "#2c3e50"
+font = "sans serif"
+
+[client]
+showErrorDetails = true
+
+[server]
+port = 8501
+headless = true
+```
+
+---
+
+## 🐛 Troubleshooting
+
+### Issue: "FileNotFoundError: movies_cleaned.csv"
+**Solution:** Ensure `movies_cleaned.csv` is in the project root directory.
+
+### Issue: "Model files not found"
+**Solution:** The app works in demo mode without model files. To enable predictions:
+1. Train the model locally
+2. Save as `movieiq_rf_model.pkl` and `genre_encoder.pkl`
+3. Upload to repository
+
+### Issue: Slow performance on Streamlit Cloud
+**Solution:**
+- Streamlit Cloud has resource limits
+- App uses `@st.cache_data` and `@st.cache_resource` for optimization
+- Consider upgrading to Streamlit Community Cloud paid tier if needed
+
+### Issue: "ModuleNotFoundError"
+**Solution:** Reinstall dependencies:
+```bash
+pip install --upgrade -r requirements.txt
+```
+
+---
+
+## 📚 Resources
+
+- [Streamlit Documentation](https://docs.streamlit.io/)
+- [Streamlit Cloud Deploy Guide](https://docs.streamlit.io/streamlit-cloud/get-started)
+- [Scikit-learn Documentation](https://scikit-learn.org/)
+- [Pandas Documentation](https://pandas.pydata.org/docs/)
+
+---
+
+## 👤 Author
+
+**sudevpatra2211-oss**
+- GitHub: [@sudevpatra2211-oss](https://github.com/sudevpatra2211-oss)
+- Email: sudevpatra2211@gmail.com
+
+---
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+---
+
+## 🤝 Contributing
+
+Contributions are welcome! Please feel free to:
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit changes (`git commit -m 'Add amazing feature'`)
+4. Push to branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+---
+
+## 📞 Support
+
+For issues, questions, or suggestions:
+- Open a [GitHub Issue](https://github.com/sudevpatra2211-oss/MovieIQ-Predictive-Analytics-on-Film-Success/issues)
+- Contact the author
+
+---
+
+## 🌟 Acknowledgments
+
+- Built with [Streamlit](https://streamlit.io/)
+- Machine Learning with [scikit-learn](https://scikit-learn.org/)
+- Data analysis with [pandas](https://pandas.pydata.org/)
+- Visualization with [matplotlib](https://matplotlib.org/)
+
+---
+
+**Last Updated:** July 2026
+**Version:** 1.0.0
