@@ -1,5 +1,5 @@
 # 🎬 MovieIQ — Movie Success Predictor
-
+side bar devloper name "sudev patra"
 **Predictive Analytics Dashboard | Streamlit | Machine Learning**
 
 [![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://movieiq-predictor.streamlit.app/)
