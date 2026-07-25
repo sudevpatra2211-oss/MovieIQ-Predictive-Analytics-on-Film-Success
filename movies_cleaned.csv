@@ -1,0 +1,6 @@
+title,genre,budget,revenue,roi,success,popularity,runtime,vote_average,has_missing,is_duplicate_title,invalid_budget_flag,invalid_revenue_flag,budget_outlier_flag,revenue_outlier_flag,popularity_outlier_flag,runtime_outlier_flag,vote_average_outlier_flag
+Movie 1,Romance,57755036,107323371,0.8582513047000785,1,60.3773601820793,98,6.611888117846714,False,False,False,False,False,False,False,False,False
+Movie 2,Drama,192100010,342896533,0.7849896676215686,1,86.28985701546246,96,7.184686968985837,False,False,False,False,False,False,False,False,False
+Movie 3,Comedy,128521863,253206827,0.9701459431847794,1,86.99532434251914,148,3.5429778665752005,False,False,False,False,False,False,False,False,False
+Movie 4,Drama,156299516,89635602,-0.42651388632579,0,72.71009622662443,118,5.985175896164717,False,False,False,False,False,False,False,False,False
+Movie 5,Comedy,148532820,221133868,0.48878791906058205,1,74.82958452853647,161,4.578480179545145,False,False,False,False,False,False,False,False,False
